@@ -17,7 +17,7 @@ eval.py
 --nFrames 7
 --data_dir Vid4
 --file_list foliage.txt (Calendar, City, Foliage, Walk)
---model weights/RBPN_4x..pth
+--model weights/RBPN_4x.pth
 ```
 
 Use Vid4 dataset(in ./Vid4)
