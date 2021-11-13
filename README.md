@@ -18,6 +18,7 @@ eval.py
 --data_dir Vid4
 --file_list foliage.txt (Calendar, City, Foliage, Walk)
 --model weights/RBPN_4x.pth
+--gpus 5
 ```
 
 Use Vid4 dataset(in ./Vid4)
