@@ -37,6 +37,12 @@ Use Vid4 dataset(in ./Vid4)
 * The number of frames: 684
 * clip names: Calendar, City, Foliage, Walk
 
+# Computing Environment
+## Server
+jjong
+## Virtual Environment
+```Conda activate chang```
+
 ----------------------------------------------------------------------------------
 
 
