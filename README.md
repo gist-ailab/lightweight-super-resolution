@@ -16,12 +16,25 @@ Use vimeo-90k dataset(in ./vimeo__septuplet folder)
 eval.py
 --nFrames 7
 --data_dir Vid4
---file_list foliage.txt
+--file_list foliage.txt (Calendar, City, Foliage, Walk)
 --model weights/RBPN_4x..pth
 ```
 
 Use Vid4 dataset(in ./Vid4)
 
+# Dataset
+## Vimeo-90K(Train)
+* resolution: 448 X 256
+* # of clips: 13,100
+* # of frames/clip: 7
+* # of frames: 91,701
+
+## Vid4(Test)
+* resolution: (720 X 576 X 3) X 2, (704 X 576 X 3) X 2
+* # of clips: 4
+* # of frames/clip: 41, 344, 49, 47
+* # of frames: 684
+* clip names: Calendar, City, Foliage, Walk
 
 ----------------------------------------------------------------------------------
 
