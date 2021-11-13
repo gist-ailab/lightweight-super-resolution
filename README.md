@@ -1,3 +1,31 @@
+# Train
+```python
+main.py
+--nFrames 7
+--batchSize 8
+--gpus 5
+```
+
+Use vimeo-90k dataset(in ./vimeo__septuplet folder)
+
+### gpus_list = range(3,opt.gpus)
+(in main.py code)
+
+# Test
+```python
+eval.py
+--nFrames 7
+--data_dir Vid4
+--file_list foliage.txt
+--model weights/RBPN_4x..pth
+```
+
+Use Vid4 dataset(in ./Vid4)
+
+
+----------------------------------------------------------------------------------
+
+
 # Recurrent Back-Projection Network for Video Super-Resolution (CVPR2019)
 
 Project page: https://alterzero.github.io/projects/RBPN.html
