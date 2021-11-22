@@ -1,6 +1,11 @@
+# Virtual Environment
+```
+conda activate chang
+```
+
 # Train
-```python
-main.py
+```
+python main.py
 --nFrames 7
 --batchSize 8
 --gpus 5
@@ -12,8 +17,8 @@ Use vimeo-90k dataset(in ./vimeo__septuplet folder)
 (in main.py code)
 
 # Test
-```python
-eval.py
+```
+python eval.py
 --nFrames 7
 --data_dir Vid4
 --file_list foliage.txt (Calendar, City, Foliage, Walk)
