@@ -4,7 +4,7 @@ conda activate chang
 ```
 
 # Train
-```
+```python
 python main.py
 --nFrames 7
 --batchSize 8
@@ -17,7 +17,7 @@ Use vimeo-90k dataset(in ./vimeo__septuplet folder)
 (in main.py code)
 
 # Test
-```
+```python
 python eval.py
 --nFrames 7
 --data_dir Vid4
