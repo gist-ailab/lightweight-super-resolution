@@ -1,8 +1,16 @@
 # lightweight-RBPN
 This is a model that reduces the size and calculation amount of the model to mount the RBPN, which is an image super resolution model, in a small memory.
 
-## RBPN
+## RBPN-Recurrent Back-Projection Network for Video Super-Resolution (CVPR2019)
 ![RBPN](images/RBPN.png)
+Project page: https://alterzero.github.io/projects/RBPN.html
+
+### NEWS
+* Apr 1, 2020 -> NEW paper on Space-Time Super-Resolution [STARnet](https://github.com/alterzero/STARnet) (to appear in CVPR2020)
+* May 9, 2019 -> Added RBPN_F11 (this model was used on NTIRE2019)
+
+
+
 ## Ours_Model
 ![Ours_Model](images/Ours_Model.png)
 
@@ -15,14 +23,20 @@ One of the components of the projection module is dbpn.
 
 
 ## Getting Started
-Tested on Titan RTX with python 3.7, pytorch 1.8.0, torchvision 0.9.0, CUDA 10.2 / 11.1 and detectron2 v0.5 / v0.6
+Tested on Titan RTX with python 3.5, pytorch >= 1.0.0, CUDA >= 9.0
 
 1. Install dependencies
 ```
 sudo apt update && sudo apt upgrade
 ```
-
-2. Set up a python environment
+2. Set up a pyflow
+* Pyflow -> https://github.com/pathak22/pyflow
+  ```Shell
+  cd pyflow/
+  python setup.py build_ext -i
+  cp pyflow*.so ..
+  ```
+3. Set up a python environment
 ```
 conda create -n test_env python=3.8
 conda activate test_env
@@ -75,26 +89,7 @@ jjong
 ## Virtual Environment
 ```Conda activate chang```
 
-----------------------------------------------------------------------------------
 
-
-# Recurrent Back-Projection Network for Video Super-Resolution (CVPR2019)
-
-Project page: https://alterzero.github.io/projects/RBPN.html
-
-## NEWS
-* Apr 1, 2020 -> NEW paper on Space-Time Super-Resolution [STARnet](https://github.com/alterzero/STARnet) (to appear in CVPR2020)
-* May 9, 2019 -> Added RBPN_F11 (this model was used on NTIRE2019)
-
-## Dependencies
-* Python 3.5
-* PyTorch >= 1.0.0
-* Pyflow -> https://github.com/pathak22/pyflow
-  ```Shell
-  cd pyflow/
-  python setup.py build_ext -i
-  cp pyflow*.so ..
-  ```
 
 ## Dataset
 * [Vimeo-90k Dataset](http://toflow.csail.mit.edu)
