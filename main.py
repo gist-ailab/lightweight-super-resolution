@@ -24,11 +24,11 @@ parser.add_argument('--start_epoch', type=int, default=1, help='Starting epoch f
 parser.add_argument('--nEpochs', type=int, default=150, help='number of epochs to train for')
 parser.add_argument('--snapshots', type=int, default=5, help='Snapshots')
 parser.add_argument('--lr', type=float, default=1e-4, help='Learning Rate. Default=0.01')
-parser.add_argument('--gpu_mode', type=bool, default=True)
+parser.add_argument('--cuda', action="store_true", help="use cuda?")
 parser.add_argument('--threads', type=int, default=8, help='number of threads for data loader to use')
 parser.add_argument('--seed', type=int, default=123, help='random seed to use. Default=123')
-parser.add_argument('--gpus', default=8, type=int, help='number of gpu')
-parser.add_argument('--data_dir', type=str, default='./vimeo_septuplet/sequences')
+parser.add_argument('--gpus', type=str, default='0', help='gpu number')
+parser.add_argument('--data_dir', type=str, default='/ailab_mat/dataset/Vimeo-90k/vimeo_septuplet/sequences')
 parser.add_argument('--file_list', type=str, default='sep_trainlist.txt')
 parser.add_argument('--other_dataset', type=bool, default=False, help="use other dataset than vimeo-90k")
 parser.add_argument('--future_frame', type=bool, default=True, help="use future frame")
@@ -37,13 +37,12 @@ parser.add_argument('--patch_size', type=int, default=64, help='0 to use origina
 parser.add_argument('--data_augmentation', type=bool, default=True)
 parser.add_argument('--model_type', type=str, default='RBPN')
 parser.add_argument('--residual', type=bool, default=False)
-parser.add_argument('--pretrained_sr', default='3x_dl10VDBPNF7_epoch_84.pth', help='sr pretrained base model')
-parser.add_argument('--pretrained', type=bool, default=False)
-parser.add_argument('--save_folder', default='weights/', help='Location to save checkpoint models')
+parser.add_argument('--pretrained', default='3x_dl10VDBPNF7_epoch_84.pth', help='sr pretrained base model')
+parser.add_argument('--save_folder', default='checkpoints/', help='Location to save checkpoint models')
 parser.add_argument('--prefix', default='F7', help='Location to save checkpoint models')
 
 opt = parser.parse_args()
-gpus_list = range(3,opt.gpus)
+gpus_list = opt.gpu.split(',')
 hostname = str(socket.gethostname())
 cudnn.benchmark = True
 print(opt)
@@ -89,7 +88,7 @@ def checkpoint(epoch):
     torch.save(model.state_dict(), model_out_path)
     print("Checkpoint saved to {}".format(model_out_path))
 
-cuda = opt.gpu_mode
+cuda = opt.cuda
 if cuda and not torch.cuda.is_available():
     raise Exception("No GPU found, please run without --cuda")
 
@@ -107,7 +106,8 @@ print('===> Building model ', opt.model_type)
 if opt.model_type == 'RBPN':
     model = RBPN(num_channels=3, base_filter=256,  feat = 64, num_stages=3, n_resblock=5, nFrames=opt.nFrames, scale_factor=opt.upscale_factor) 
 
-model = torch.nn.DataParallel(model, device_ids=gpus_list)
+if len(opt.gpu) > 1:
+    model = torch.nn.DataParallel(model, device_ids=gpus_list)
 criterion = nn.L1Loss()
 
 print('---------- Networks architecture -------------')
@@ -115,7 +115,7 @@ print_network(model)
 print('----------------------------------------------')
 
 if opt.pretrained:
-    model_name = os.path.join(opt.save_folder + opt.pretrained_sr)
+    model_name = os.path.join(opt.save_folder + opt.pretrained)
     if os.path.exists(model_name):
         #model= torch.load(model_name, map_location=lambda storage, loc: storage)
         model.load_state_dict(torch.load(model_name, map_location=lambda storage, loc: storage))
