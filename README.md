@@ -1,6 +1,33 @@
-# Virtual Environment
+# lightweight-RBPN
+This is a model that reduces the size and calculation amount of the model to mount the RBPN, which is an image super resolution model, in a small memory.
+
+## RBPN
+![RBPN](images/RBPN.png)
+## Ours_Model
+![Ours_Model](images/Ours_Model.png)
+
+## DBPN
+One of the components of the projection module is dbpn.
+### [Deep Back-Projection Networks for Super-Resolution (CVPR2018)](https://github.com/alterzero/DBPN-Pytorch)
+- Winner (1st) of [NTIRE2018](http://openaccess.thecvf.com/content_cvpr_2018_workshops/papers/w13/Timofte_NTIRE_2018_Challenge_CVPR_2018_paper.pdf) Competition (Track: x8 Bicubic Downsampling)
+- Winner of [PIRM2018](https://arxiv.org/pdf/1809.07517.pdf) (1st on Region 2, 3rd on Region 1, and 5th on Region 3)
+- Project page: https://alterzero.github.io/projects/DBPN.html
+
+
+## Getting Started
+Tested on Titan RTX with python 3.7, pytorch 1.8.0, torchvision 0.9.0, CUDA 10.2 / 11.1 and detectron2 v0.5 / v0.6
+
+1. Install dependencies
 ```
-conda activate chang
+sudo apt update && sudo apt upgrade
+```
+
+2. Set up a python environment
+```
+conda create -n test_env python=3.8
+conda activate test_env
+pip install torch torchvision
+python setup.py build develop
 ```
 
 # Train
@@ -88,14 +115,6 @@ https://drive.google.com/drive/folders/1sI41DH5TUNBKkxRJ-_w5rUf90rN97UFn?usp=sha
     ```python
     eval.py
     ```
-
-![RBPN](https://alterzero.github.io/projects/RBPN.png)
-
-## Our paper on Image Super-Resolution
-### [Deep Back-Projection Networks for Super-Resolution (CVPR2018)](https://github.com/alterzero/DBPN-Pytorch)
-#### Winner (1st) of [NTIRE2018](http://openaccess.thecvf.com/content_cvpr_2018_workshops/papers/w13/Timofte_NTIRE_2018_Challenge_CVPR_2018_paper.pdf) Competition (Track: x8 Bicubic Downsampling)
-#### Winner of [PIRM2018](https://arxiv.org/pdf/1809.07517.pdf) (1st on Region 2, 3rd on Region 1, and 5th on Region 3)
-#### Project page: https://alterzero.github.io/projects/DBPN.html
 
 
 ## Citations
