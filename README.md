@@ -1,7 +1,7 @@
 # lightweight-RBPN
 This is a model that reduces the size and calculation amount of the model to mount the RBPN, which is an image super resolution model, in a small memory.
 
-## RBPN-Recurrent Back-Projection Network for Video Super-Resolution (CVPR2019)
+## RBPN(CVPR2019)
 ![RBPN](images/RBPN.png)
 Project page: https://alterzero.github.io/projects/RBPN.html
 
@@ -11,7 +11,7 @@ Project page: https://alterzero.github.io/projects/RBPN.html
 
 
 
-## Ours_Model - lightweight-RBPN
+## Ours_Model - lightweight RBPN
 ![Ours_Model](images/Ours_Model.png)
 Reducing the amount of calculation by transforming the model for parts where similar calculations are repeated.
 
@@ -45,14 +45,27 @@ pip install torch torchvision
 python setup.py build develop
 ```
 
-# Train
-```python
-python main.py
---nFrames 7
---batchSize 8
---gpus 5
-```
 
+## HOW TO
+
+#Training
+
+    ```python main.py
+    --nFrames 7
+    --batchSize 8
+    --gpus 5
+    ```
+
+#Testing
+
+    ```python eval.py
+      --nFrames 7
+      --data_dir Vid4
+      --file_list foliage.txt (Calendar, City, Foliage, Walk)
+      --model weights/RBPN_4x.pth
+      --gpus 5
+    ```
+    
 Use vimeo-90k dataset(in ./vimeo__septuplet folder)
 
 ### gpus_list = range(3,opt.gpus)
@@ -61,11 +74,7 @@ Use vimeo-90k dataset(in ./vimeo__septuplet folder)
 # Test
 ```python
 python eval.py
---nFrames 7
---data_dir Vid4
---file_list foliage.txt (Calendar, City, Foliage, Walk)
---model weights/RBPN_4x.pth
---gpus 5
+
 ```
 
 Use Vid4 dataset(in ./Vid4)
@@ -98,19 +107,6 @@ jjong
 ## Pretrained Model and Testset
 https://drive.google.com/drive/folders/1sI41DH5TUNBKkxRJ-_w5rUf90rN97UFn?usp=sharing
 
-## HOW TO
-
-#Training
-
-    ```python
-    main.py
-    ```
-
-#Testing
-
-    ```python
-    eval.py
-    ```
 
 
 ## Citations
