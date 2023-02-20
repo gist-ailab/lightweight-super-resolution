@@ -11,8 +11,9 @@ Project page: https://alterzero.github.io/projects/RBPN.html
 
 
 
-## Ours_Model
+## Ours_Model - lightweight-RBPN
 ![Ours_Model](images/Ours_Model.png)
+Reducing the amount of calculation by transforming the model for parts where similar calculations are repeated.
 
 ## DBPN
 One of the components of the projection module is dbpn.
