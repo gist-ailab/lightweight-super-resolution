@@ -50,7 +50,8 @@ python setup.py build develop
 
 #Training
 
-    ```python main.py
+    ```python
+      python main.py
     --nFrames 7
     --batchSize 8
     --gpus 5
@@ -58,14 +59,15 @@ python setup.py build develop
 
 #Testing
 
-    ```python eval.py
+    ```python 
+      python eval.py
       --nFrames 7
       --data_dir Vid4
       --file_list foliage.txt (Calendar, City, Foliage, Walk)
       --model weights/RBPN_4x.pth
       --gpus 5
     ```
-    
+
 Use vimeo-90k dataset(in ./vimeo__septuplet folder)
 
 ### gpus_list = range(3,opt.gpus)
