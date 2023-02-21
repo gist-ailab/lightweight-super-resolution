@@ -76,42 +76,40 @@ cd /ailab_mat/dataset/Vid4
 
 2. Organize the folders as follows
 ```
-Vimeo-90K
-├── gt
-       └──1_0_0_0_0
-              ├──0.jpg
-              ├──1.jpg
-              └──...
-├── gt
-       └──pretrain_data
-              ├──4_0_0_0_0
-                     ├──0.jpg
-                     ├──1.jpg
-                     └──...
-              ├──4_1_0_0_0
-                     ├──0.jpg
-                     ├──1.jpg
-                     └──...
-              ├──4_0_1_0_0
-                     └──...
-              ├──4_0_0_1_0
-                     └──...
-              └──4_0_0_0_1
-                     └──...
-└── datasets
-       ├── multi_degrade
-              ├──0_0.jpg
-              ├──0_1.jpg
-              ├──0_2.jpg
-              ├──0_3.jpg
-              ├──0_4.jpg     
-              ├──1_0.jpg
-              ├──1_1.jpg
-              └──...
-       ├── multi_degrade_0
-              ├──0.jpg
-              ├──1.jpg
-              └──...
+Vimeo-90K/vimeo_septuplet
+├── LR
+       ├── calendar
+              ├── frame_0002.png
+              ├── ...
+              └── frame_00XX.png
+       ├── city        
+       ├── foliage
+       └── walk
+├── HR
+       ├── calendar
+       ├── city        
+       ├── foliage
+       └── walk
+└── FRVSR
+       ├── calendar
+       ├── city        
+       ├── foliage
+       └── walk
+
+
+Vid4
+├── sep_trainlist.txt
+├── sep_testlist.txt
+└── sequences
+       ├── 000XX
+              ├── 0001
+                    ├── im1.png
+                    ├── ...
+                    └── im7.png
+              ├── ...
+              └── 1000
+       ├── ... 
+       └── 00096
 ```       
 ### Train on sample dataset
 
